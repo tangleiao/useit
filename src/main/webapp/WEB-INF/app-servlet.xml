@@ -10,14 +10,19 @@
 	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd"
 default-lazy-init="true">
 
+	<!--使用注解包配置-->
    <context:component-scan base-package="com.useit.action" />
 	
 	<!-- Configures the @Controller programming model -->
 	<mvc:annotation-driven />
 
+    <!--配置默认视图解析器，这里只能解析jsp后缀的页面，不能解析html后缀的页面，优先级最低-->
    <bean class = "org.springframework.web.servlet.view.InternalResourceViewResolver">
       <property name = "prefix" value = "/WEB-INF/jsp/" />
       <property name = "suffix" value = ".jsp" />
    </bean>
+   
+   <!--静态资源配置-->
+    <mvc:resources location="/static/" mapping="/static/**"/>
 
 </beans>
